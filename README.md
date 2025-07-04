@@ -1,146 +1,188 @@
 <!-- Hero Section -->
+<div align="center">
 
-<pre align="center">
- __      __   _             ___                      _     
- \ \    / /  (_)         / ____|                    | |    
-  \ \  / /__  _  ___ ___| (___  _ __   ___  ___  ___| |__  
-   \ \/ / _ \| |/ __/ _ \\___ \| '_ \ / _ \/ _ \/ __| '_ \ 
-    \  / (_) | | (_|  __/____) | |_) |  __/  __/ (__| | | |
-     \/ \___/|_|\___\___|_____/| .__/ \___|\___|\___|_| |_|
-                               | |                         
-                               |_|                         
-</pre>
+```
+    __      __   _        _____                     _   
+   \ \    / /  (_)      / ____|                   | |  
+    \ \  / /__  _  ___ ___| (___   _ __    ___  ___  ___| |__  
+     \ \/ / _ \| |/ __/ _ \\___ \ | '_ \ / _ \/ _ \/ __| '_ \ 
+      \  / (_) | | (_|  __/____) || |_) |  __/  __/ (__| | | |
+       \/ \___/|_|\___\___|_____/ | .__/ \___|\___|\___|_| |_|
+                                 |_|                        
+```
 
-<p align="center">Мини‑консольный синтезатор речи в стиле Animal Crossing на C# (<a href="https://dotnet.microsoft.com/en-us/">.NET 9</a>) с использованием <a href="https://github.com/naudio/NAudio">NAudio</a></p>
+</div>
 
 <p align="center">
-  <a href="#rus"><kbd>RU</kbd></a>
-  <a href="#eng"><kbd>EN</kbd></a>
+  A mini-console speech synthesizer in the style of Animal Crossing, built in C# (<a href="https://dotnet.microsoft.com/en-us/">.NET 9</a>) using <a href="https://github.com/naudio/NAudio">NAudio</a>.
 </p>
 
 <p align="center">
-  <a href="https://github.com/username/VoiceSpeech/stargazers"><img src="https://img.shields.io/github/stars/username/VoiceSpeech?style=social" alt="GitHub stars"/></a>
-  <a href="https://github.com/username/VoiceSpeech/actions"><img src="https://img.shields.io/github/actions/workflow/status/username/VoiceSpeech/dotnet.yml?branch=main" alt="Build status"/></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/username/VoiceSpeech" alt="License: MIT"/></a>
+  <a href="#english-version"><kbd>🇬🇧 EN</kbd></a>
+  ·
+  <a href="#russian-version"><kbd>🇷🇺 RU</kbd></a>
 </p>
 
 ---
 
-## 📖 Содержание
+<h2 id="english-version">🇬🇧 English Version</h2>
 
-1. [RU Описание](#rus)
-2. [EN Quickstart](#eng)
-3. [Структура проекта](#project-structure)
-4. [Функционал / Features](#features)
-5. [Установка и запуск](#getting-started)
-6. [Технологии / Tech](#technologies)
-7. [Лицензия](#license)
+VoiceSpeech is a lightweight console-based speech synthesizer inspired by Animal Crossing. It works by taking text input, breaking it down into syllables, and then stitching together short, pre-recorded audio clips to generate a playful, "beeping" voice output.
 
----
+### ✨ Features
 
-## 🎯 RU Описание <a id="rus"></a>
-
-VoiceSpeech — консольный синтезатор речи в духе Animal Crossing:
-
-* Разбивает входной текст на слоги
-* Собирает случайные `.wav` файлы из папок `High` и `Low`
-* Склеивает их в единый аудиопоток
-* Воспроизводит через NAudio
-* Опционально сохраняет итоговый WAV в `Models/VoiceSave/`
+* **Syllable-based Synthesis**: Splits input text into syllables for more natural-sounding gibberish.
+* **Randomized Audio**: Selects random `.wav` clips from `High` and `Low` pitch folders.
+* **Audio Concatenation**: Merges the selected clips into a single audio stream.
+* **Playback**: Plays the final audio directly in the console using NAudio.
+* **Save to File**: Optionally saves the generated speech as a `.wav` file in the `Models/VoiceSave/` directory.
 
 ---
 
-## 🎯 EN Quickstart <a id="eng"></a>
-
-VoiceSpeech is a lightweight console-based speech synthesizer inspired by Animal Crossing:
-
-* Splits input text into syllables
-* Selects random `.wav` clips from `High` and `Low` folders
-* Concatenates them into one audio stream
-* Plays via NAudio
-* Optionally saves the resulting WAV to `Models/VoiceSave/`
-
----
-
-## 🗂 Структура проекта <a id="project-structure"></a>
+### 🗂 Project Structure
 
 ```text
 VoiceSpeech/
 ├─ Models/
 │   ├─ Voices/
-│   │   ├─ High/       # high-pitch clips
-│   │   └─ Low/        # low-pitch clips
-│   └─ VoiceSave/     # saved WAVs
-├─ AudioManager.cs     # audio handling logic
-├─ BeepAudio.cs        # placeholder for Console.Beep()
-├─ DecoderText.cs      # text-to-syllable decoder
-├─ Main.cs             # test runner
-├─ Program.cs          # console CLI
-└─ VoiceChaker.Models/
-    └─ Voice.cs        # audio clip model
+│   │   ├─ High/         # High-pitch .wav clips
+│   │   └─ Low/          # Low-pitch .wav clips
+│   └─ VoiceSave/      # Directory for saved WAVs
+├─ AudioManager.cs     # Core audio handling logic (NAudio)
+├─ DecoderText.cs      # Text-to-syllable decoding logic
+├─ Program.cs          # Main entry point and console CLI
+└─ ... other project files
 ```
 
 ---
 
-## 🎯 Функционал / Features <a id="features"></a>
+### 🚀 Getting Started
 
-* **Speech Generation**: text → `.wav`
-* **Playback**: via NAudio
-* **Save**: store output in `Models/VoiceSave/`
-* **BeepAudio**: proof-of-concept `Console.Beep()` support
+To get a local copy up and running, follow these simple steps.
+
+#### Prerequisites
+
+* [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+* An IDE like [Visual Studio 2022](https://visualstudio.microsoft.com/) or [VS Code](https://code.visualstudio.com/)
+
+#### Installation & Running
+
+1.  Clone the repo:
+    ```bash
+    # IMPORTANT: Replace 'username' with the actual repository owner's username
+    git clone [https://github.com/username/VoiceSpeech.git](https://github.com/username/VoiceSpeech.git)
+    cd VoiceSpeech
+    ```
+2.  Restore dependencies and run the project:
+    ```bash
+    dotnet restore
+    dotnet run -- "Hello, world!"
+    ```
+3.  To synthesize Russian text:
+    ```bash
+    dotnet run -- "Привет, мир!"
+    ```
+
+---
+
+### 🛠️ Technologies Used
+
+<p align="center">
+  <kbd>C#</kbd>
+  <kbd>.NET 9</kbd>
+  <kbd>NAudio</kbd>
+  <kbd>Console</kbd>
+  <kbd>Visual Studio 2022</kbd>
+</p>
+
+---
+
+### 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+---
+---
 
 <details>
-<summary>Пример / Example</summary>
+<summary><h2 id="russian-version">🇷🇺 Russian Version (Нажмите, чтобы развернуть)</h2></summary>
 
-```bash
-# Russian example
-dotnet run -- "Привет, мир!"
-# English example
-dotnet run -- "Hello, world!"
+VoiceSpeech — это консольный синтезатор речи в духе Animal Crossing. Он принимает на вход текст, разбивает его на слоги, а затем "озвучивает", склеивая короткие аудио-фрагменты для создания характерного игрового голоса.
+
+### ✨ Функционал
+
+* **Синтез на основе слогов**: Разбивает входной текст на слоги для более естественного звучания.
+* **Случайные звуки**: Выбирает случайные `.wav` файлы из папок с высокими (`High`) и низкими (`Low`) звуками.
+* **Объединение аудио**: Склеивает выбранные клипы в единый аудиопоток.
+* **Воспроизведение**: Проигрывает итоговый звук прямо в консоли с помощью библиотеки NAudio.
+* **Сохранение в файл**: Позволяет сохранить результат в виде `.wav` файла в директорию `Models/VoiceSave/`.
+
+---
+
+### 🗂 Структура проекта
+
+```text
+VoiceSpeech/
+├─ Models/
+│   ├─ Voices/
+│   │   ├─ High/         # .wav файлы с высоким тоном
+│   │   └─ Low/          # .wav файлы с низким тоном
+│   └─ VoiceSave/      # Папка для сохраненных WAV-файлов
+├─ AudioManager.cs     # Логика по работе с аудио (NAudio)
+├─ DecoderText.cs      # Логика для разделения текста на слоги
+├─ Program.cs          # Точка входа и интерфейс командной строки
+└─ ... другие файлы проекта
 ```
 
+---
+
+### 🚀 Установка и запуск
+
+Следуйте этим шагам, чтобы запустить проект локально.
+
+#### Требования
+
+* [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+* Среда разработки, например [Visual Studio 2022](https://visualstudio.microsoft.com/) или [VS Code](https://code.visualstudio.com/)
+
+#### Установка и запуск
+
+1.  Клонируйте репозиторий:
+    ```bash
+    # ВАЖНО: Замените 'username' на имя пользователя владельца репозитория
+    git clone [https://github.com/username/VoiceSpeech.git](https://github.com/username/VoiceSpeech.git)
+    cd VoiceSpeech
+    ```
+2.  Восстановите зависимости и запустите проект:
+    ```bash
+    dotnet restore
+    dotnet run -- "Привет, мир!"
+    ```
+3.  Для синтеза английской речи:
+    ```bash
+    dotnet run -- "Hello, world!"
+    ```
+
+---
+
+### 🛠️ Используемые технологии
+
+<p align="center">
+  <kbd>C#</kbd>
+  <kbd>.NET 9</kbd>
+  <kbd>NAudio</kbd>
+  <kbd>Console</kbd>
+  <kbd>Visual Studio 2022</kbd>
+</p>
+
+---
+
+### 📄 Лицензия
+
+Проект распространяется по лицензии MIT. Подробности в файле `LICENSE`.
+
+<p align="right">(<a href="#top">наверх</a>)</p>
+
 </details>
-
----
-
-## 🚀 Установка и запуск <a id="getting-started"></a>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/dotnet-9.0-blue" alt=".NET 9"/>&nbsp;
-  <img src="https://img.shields.io/badge/C%23-10.0-blueviolet" alt="C# 10"/>&nbsp;
-  <img src="https://img.shields.io/badge/NAudio-2.1-green" alt="NAudio"/>
-</p>
-
-1. Клонируйте репозиторий:
-
-   ```bash
-   git clone https://github.com/username/VoiceSpeech.git
-   cd VoiceSpeech
-   ```
-2. Откройте проект в Visual Studio 2022 или VS Code:
-
-   ```bash
-   code .
-   ```
-3. Восстановите зависимости и запустите:
-
-   ```bash
-   dotnet restore
-   dotnet run --project VoiceSpeech
-   ```
-
----
-
-## ⚒️ Технологии / Tech <a id="technologies"></a>
-
-<p align="center">
-  <kbd>C#</kbd> <kbd>.NET 9</kbd> <kbd>NAudio</kbd> <kbd>Console</kbd>
-  <kbd>Visual Studio 2022</kbd> <kbd>VS Code</kbd> <kbd>Audacity</kbd>
-</p>
-
----
-
-## 📄 Лицензия <a id="license"></a>
-
-Этот проект лицензируется под [MIT License](LICENSE).
-© 2025 Junior+/Middle C# Developer
